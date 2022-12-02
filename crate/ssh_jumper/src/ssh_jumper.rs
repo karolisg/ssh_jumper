@@ -206,7 +206,7 @@ impl SshJumper {
                             ret_forward_stream_r = forward_stream_r.read(&mut buf_forward_stream_r).fuse() => match ret_forward_stream_r {
                                 Ok(0) => {
                                     let _send_result = ssh_forwarder_tx.send(SshForwarderEnd::LocalReadEof);
-                                    break;
+//                                     break;
                                 },
                                 Ok(n) => {
                                     if let Err(e) = jump_host_channel.write(&buf_forward_stream_r[..n]).await.map(|_| ()) {
